@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks and Expression Evaluations</title>
+    <link rel="stylesheet" href="stylestack.css">
+</head>
+<body>
+    <div class="navigation">
+        <img src="litrato/pngwing.com (14).png" alt="Logo" class="logo">
+        <button class="hamburger" id="hamburger">☰</button>
+        <nav id="menu">
+            <a href="index.html">HOME</a>
+
+        </nav>
+    </div>
+
+    <div class="main-container">
+        <div class="sort-options">
+            <button class="sort-button" onclick="showInfixToPostfix()">Infix to Postfix</button>
+            <button class="sort-button" onclick="showInfixToPrefix()">Infix to Prefix</button>
+            <button class="sort-button" onclick="showPrefixEvaluation()">Prefix Evaluation</button>
+            <button class="sort-button" onclick="showPostfixEvaluation()">Postfix Evaluation</button>
+            <button class="sort-button" onclick="showInfixEvaluation()">Infix Evaluation</button>
+        </div>
+    
+        <div class="content" id="content">
+            <h2>WALA PA DITO NAGIISIP PA OK NA YUNG SORT AT LINKED LIST</h2>
+            <p>
+                Convert an infix expression to postfix notation (Reverse Polish Notation) using a stack. 
+                This approach ensures correct precedence and associativity for operators.
+            </p>
+            <p><b>Pseudocode:</b></p>
+            <pre>
+1. CREATE a stack for operators and a list for result
+2. FOR each character in the expression:
+    a. IF operand, ADD to result
+    b. ELSE IF '(', PUSH to stack
+    c. ELSE IF ')', POP until '('
+    d. ELSE operator, POP based on precedence and PUSH current operator
+3. POP remaining operators to result
+            </pre>
+            <p><b>Python Code Example:</b></p>
+            <pre class="code1">
+def infix_to_postfix(expression):
+    precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+    stack = []
+    result = []
+
+    for char in expression:
+        if char.isalnum():
+            result.append(char)
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                result.append(stack.pop())
+            stack.pop()
+        else:
+            while stack and stack[-1] != '(' and precedence[char] <= precedence[stack[-1]]:
+                result.append(stack.pop())
+            stack.append(char)
+
+    while stack:
+        result.append(stack.pop())
+
+    return ''.join(result)
+
+print(infix_to_postfix("(A+B)*C"))
+            </pre>
+            <button class="run-button" onclick="runCode('code1')">RUN CODE</button>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("menu");
+
+        hamburger.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+
+        function showInfixToPostfix() {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <h2>Infix to Postfix</h2>
+                <p>
+                    Convert an infix expression to postfix notation (Reverse Polish Notation) using a stack. 
+                    This approach ensures correct precedence and associativity for operators.
+                </p>
+                <p><b>Pseudocode:</b></p>
+                <pre>
+1. CREATE a stack for operators and a list for result
+2. FOR each character in the expression:
+    a. IF operand, ADD to result
+    b. ELSE IF '(', PUSH to stack
+    c. ELSE IF ')', POP until '('
+    d. ELSE operator, POP based on precedence and PUSH current operator
+3. POP remaining operators to result
+                </pre>
+                <p><b>Python Code Example:</b></p>
+                <pre class="code1">
+def infix_to_postfix(expression):
+    precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+    stack = []
+    result = []
+
+    for char in expression:
+        if char.isalnum():
+            result.append(char)
+        elif char == '(':
+            stack.append(char)
+        elif char == ')':
+            while stack and stack[-1] != '(':
+                result.append(stack.pop())
+            stack.pop()
+        else:
+            while stack and stack[-1] != '(' and precedence[char] <= precedence[stack[-1]]:
+                result.append(stack.pop())
+            stack.append(char)
+
+    while stack:
+        result.append(stack.pop())
+
+    return ''.join(result)
+
+print(infix_to_postfix("(A+B)*C"))
+                </pre>
+                <button class="run-button" onclick="runCode('code1')">RUN CODE</button>
+            `;
+        }
+
+        function showInfixToPrefix() {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <h2>Infix to Prefix</h2>
+                <p>
+                    Convert an infix expression to prefix notation (Polish Notation) using a stack-based method.
+                </p>
+                <p><b>Pseudocode:</b></p>
+                <pre>
+1. REVERSE the expression and SWAP '(' and ')'
+2. CONVERT reversed expression to postfix
+3. REVERSE the postfix result to get prefix
+                </pre>
+                <p><b>Python Code Example:</b></p>
+                <pre class="code2">
+def infix_to_prefix(expression):
+    def reverse(expression):
+        return expression[::-1].replace('(', 'temp').replace(')', '(').replace('temp', ')')
+
+    def infix_to_postfix(expression):
+        precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+        stack = []
+        result = []
+
+        for char in expression:
+            if char.isalnum():
+                result.append(char)
+            elif char == '(':
+                stack.append(char)
+            elif char == ')':
+                while stack and stack[-1] != '(':
+                    result.append(stack.pop())
+                stack.pop()
+            else:
+                while stack and stack[-1] != '(' and precedence[char] <= precedence[stack[-1]]:
+                    result.append(stack.pop())
+                stack.append(char)
+
+        while stack:
+            result.append(stack.pop())
+
+        return ''.join(result)
+
+    reversed_expr = reverse(expression)
+    postfix = infix_to_postfix(reversed_expr)
+    return reverse(postfix)
+
+print(infix_to_prefix("(A+B)*C"))
+                </pre>
+                <button class="run-button" onclick="runCode('code2')">RUN CODE</button>
+            `;
+        }
+
+        function runCode(className) {
+            const codeBlock = document.querySelector(`.${className}`);
+            const code = codeBlock ? codeBlock.textContent.trim() : '';
+            if (code) {
+                localStorage.setItem('codeToRun', code);
+                window.location.href = 'runcode.html';
+            } else {
+                alert('No code found to run!');
+            }
+        }
+    </script>
+</body>
+</html>

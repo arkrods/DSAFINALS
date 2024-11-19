@@ -1,0 +1,244 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #3c1555; /* Darker purple background */
+    color: #ffffff;
+}
+
+/* Navigation Styles */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    flex-wrap: wrap; /* Ensure the navigation wraps on smaller screens */
+    background-color: #3c1555; /* Darker navigation color */
+    position: relative;
+}
+
+.navigation .logo {
+    width: 50px;
+    height: 50px;
+}
+
+.navigation .nav-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth transition for menu */
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 15px;
+    transition: transform 0.4s ease, background-color 0.3s ease; /* Smooth zoom on hover */
+}
+
+.navigation a:hover {
+    transform: scale(1.2); /* Zoom effect for navigation links */
+    background-color: rgba(255, 255, 255, 0.2); /* Light transparent background */
+    padding: 5px 10px;
+    border-radius: 5px; /* Rounded hover effect */
+    transition: transform 0.4s ease, background-color 0.3s ease;
+}
+
+.navigation .nav-links a.active {
+    color: #ffcc00; /* Highlight the active link */
+    text-decoration: underline;
+}
+
+.navigation .hamburger {
+    display: none; /* Hidden by default on larger screens */
+    font-size: 30px;
+    background: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.navigation .hamburger.active {
+    transform: rotate(45deg); /* Rotate into an "X" shape */
+    color: #ffcc00; /* Change color when active */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Main Container */
+.main-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 20px 50px;
+    box-sizing: border-box; /* Include padding and border in dimensions */
+    height: calc(100vh - 100px); /* Full height minus navigation */
+    overflow-y: auto; /* Allow scrolling if content exceeds height */
+}
+
+/* Sort Options */
+.sort-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px; /* Fixed width for left section */
+    background-color: #501c72; /* Dark purple for the sidebar */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.sort-button {
+    background-color: rgba(112, 78, 174, 0.7); /* Semi-transparent purple */
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.sort-button:hover {
+    background-color: #5e3e94; /* Darker purple for hover */
+    transform: scale(1.1); /* Zoom effect */
+    border: 3px solid #ffffff; /* White border on hover */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4); /* Glowing shadow */
+}
+
+/* Content Section */
+.content {
+    flex: 1; /* Take remaining space */
+    background-color: #4d1a69; /* Slightly lighter purple */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+h2 {
+    font-size: 28px;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    line-height: 1.5; /* Improved readability */
+}
+
+pre {
+    font-size: 18px;
+    background-color: rgba(112, 78, 174, 0.7); /* Semi-transparent purple */
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+    text-align: left;
+}
+
+/* Run Button */
+.run-button {
+    display: inline-block;
+    background-color: #704eae; /* Light purple */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.run-button:hover {
+    background-color: #5e3e94; /* Darker purple */
+    transform: scale(1.05); /* Slight zoom on hover */
+    transition: transform 0.2s;
+    border: 3px solid #ffffff; /* White border on hover */
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4); /* Glowing shadow */
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block; /* Show hamburger menu button on smaller screens */
+    }
+
+    .navigation .nav-links {
+        display: none; /* Hide menu by default */
+        flex-direction: column; /* Stack links vertically */
+        align-items: center; /* Center links horizontally */
+        gap: 15px;
+        width: 100%;
+        background-color: rgba(112, 78, 174, 0.9); /* Slightly darker purple background */
+        position: absolute;
+        top: 70px; /* Position below navigation */
+        right: 0;
+        padding: 10px 0;
+        z-index: 1000;
+    }
+
+    .navigation .nav-links.active {
+        display: flex; /* Show menu when the 'active' class is toggled */
+    }
+
+    .main-container {
+        flex-direction: column; /* Stack sort-options and content vertically */
+        justify-content: center;
+        align-items: center; /* Center align content */
+        height: auto; /* Allow height to grow as needed */
+    }
+
+    .sort-options {
+        width: 100%; /* Full width for sort options */
+        max-width: 300px;
+        text-align: center;
+    }
+
+    .content {
+        width: 100%; /* Full width for content */
+        text-align: center;
+    }
+
+    .run-button {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .run-button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    pre {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .sort-button {
+        font-size: 14px;
+        width: 100%; /* Full width for buttons */
+    }
+
+    .navigation .nav-links {
+        text-align: center; /* Center align navigation links for smaller screens */
+    }
+
+    .content {
+        padding: 15px;
+    }
+}

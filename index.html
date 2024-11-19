@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Hamburger Menu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="litrato/pngwing.com (14).png" alt="Logo" class="logo">
+        <button class="hamburger" id="hamburger">☰</button> <!-- Hamburger button -->
+        <nav id="menu">
+            <a href="#home">HOME</a>
+            <a href="#members" id="open-members-modal">MEMBERS</a>
+            <a href="#about" id="open-about-modal">ABOUT</a>
+        </nav>
+    </header>
+    
+
+    <div class="container">
+        <a href="sorting.html" class="card">SORTING ALGORITHM</a>
+        <a href="linkedlist.html" class="card">LINKED LIST</a>
+        <a href="stack.html" class="card">STACK, QUEUE,<br>TREES</a>
+    </div>
+
+    <!-- Members Modal -->
+    <div id="members-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Members</h3>
+                <button class="close-btn" id="close-members-modal">×</button>
+            </div>
+            <div class="members-grid">
+                <!-- Add 10 members dynamically -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Leader">
+                    </div>
+                    <div class="member-info">
+                        <h4>CONTAWE, RODEL M</h4>
+                        <p>LEADER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>VENTURA, VICTOR JUVENILE M.</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <!-- Repeat the structure for other members -->
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>ERASGA, CAMESA JOY R.</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>MANZANO, PIERRE EDISON C.</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Leader">
+                    </div>
+                    <div class="member-info">
+                        <h4>CASPE, PRINCESS MAE D.</h4>
+                        <p>LEADER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>MORADA, RONALYN P.</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>CFERRER, LADYLYN P.</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>CONTAWE, RODEL M</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Leader">
+                    </div>
+                    <div class="member-info">
+                        <h4>CONTAWE, RODEL M</h4>
+                        <p>LEADER</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-image">
+                        <img src="litrato/pngwing.com (14).png" alt="Member">
+                    </div>
+                    <div class="member-info">
+                        <h4>CONTAWE, RODEL M</h4>
+                        <p>MEMBER</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Our Project</h3>
+                <button class="close-btn" id="close-about-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to our project for the <strong>CC104 Subject Final Requirements</strong>! Below is a detailed breakdown of the requirements that guided the creation of this website, along with the objectives we aim to achieve.</p>
+                <h4>Objective</h4>
+                <p>Our primary goal is to demonstrate our understanding of <strong>Algorithms</strong> and <strong>Data Structures</strong> by creating a functional and informative website. This project serves as both a learning tool and a showcase of our skills in programming, web development, and problem-solving.</p>
+                <h4>Team Effort</h4>
+                <p>This is a group project with at least 10 members per team. However, individual (SOLO) projects are also accepted. The website was built collaboratively, showcasing the combined knowledge and effort of our team.</p>
+                <h4>Final Note</h4>
+                <p>This project highlights our hard work, creativity, and technical knowledge gained throughout the semester. We are excited to present our website to demonstrate our proficiency in <strong>Algorithms</strong>, <strong>Data Structures</strong>, and their real-world applications.</p>
+                <p>Thank you for visiting and reviewing our project!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
